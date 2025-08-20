@@ -3,8 +3,6 @@ const mailSender = require("../utils/mailSender");
 const bcrypt = require("bcryptjs");
 const crypto = require("crypto");
 
-require("dotenv").config();
-
 exports.resetPasswordToken = async (req, res) => {
 	try {
 		const email = req.body.email;
@@ -27,7 +25,7 @@ exports.resetPasswordToken = async (req, res) => {
 		);
 		console.log("DETAILS", updatedDetails);
 
-		const url = `${FRONT_END_URL}${FRONT_ENT_PORT}/update-password/${token}`;
+		const url = `http://localhost:3000/update-password/${token}`;
 
 		await mailSender(
 			email,
